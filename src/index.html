@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+    <script data-require="angular.js@1.3.0" data-semver="1.3.0" src="//code.angularjs.org/1.3.0/angular.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-app="app">
+    <div ng-controller="AmqTopicsController" class="container">
+      <div class="col-xs-6">
+        <h1>Topics</h1>
+        <div ng-repeat="topic in topics track by $index">
+          <a href ng-click="setTopic(topic)">{{topic}}</a>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <h1>Messages of {{currentTopic}}</h1>
+        <div ng-repeat="message in messages track by $index">{{message}}</div>
+        <button class="btn btn-success" ng-click="getLastMessage()">Get Message</button>
+      </div>
+    </div>
+  </body>
+
+</html>
