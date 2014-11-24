@@ -10,13 +10,17 @@
   <body ng-app="app">
     <div ng-controller="AmqTopicsController" class="container">
       <div class="col-xs-6">
-        <h1>Topics</h1>
-        <div ng-repeat="topic in topics track by $index">
-          <a href ng-click="setTopic(topic)">{{topic}}</a>
+        <input ng-model="host" ng-init="host='localhost:8161'" >
+        </br>
+        <button ng-click="getSource('topic')">Get topics</button>
+        <button ng-click="getSource('queue')">Get queues</button>
+        <h1>Source</h1>
+        <div ng-repeat="source in sources track by $index">
+          <a href ng-click="setSource(source)">{{source}}</a>
         </div>
       </div>
       <div class="col-xs-6">
-        <h1>Messages of {{currentTopic}}</h1>
+        <h1>Messages of {{currentSource}}</h1>
         <div ng-repeat="message in messages track by $index">{{message}}</div>
         <button class="btn btn-success" ng-click="getLastMessage()">Get Message</button>
       </div>
